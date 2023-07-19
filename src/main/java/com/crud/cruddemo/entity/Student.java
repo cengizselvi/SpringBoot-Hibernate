@@ -13,7 +13,7 @@ public class Student {
     private int id;
 
     @Column(name="first_name")
-    private  String firstName;
+    private  String firstName2;
 
     @Column(name = "last_name")
     private String lastName;
