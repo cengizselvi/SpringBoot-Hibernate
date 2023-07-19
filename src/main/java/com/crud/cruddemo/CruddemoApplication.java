@@ -21,7 +21,15 @@ public class CruddemoApplication {
 		// Spring beans yüklendikten sonra çalıştırılacak ve bunu verilen bu yöntem içinde kullanabileceğiz.
 		return runner -> {
 			createStudent(studentDAO);
+			readStudent(studentDAO);
+
 		};
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+		System.out.println("sorgulama id: 2 "  );
+		Student myStudent=studentDAO.findById(2);
+		System.out.println("bulundu: " + myStudent);
 	}
 
 	private void createStudent(StudentDAO studentDAO) {
@@ -36,6 +44,9 @@ public class CruddemoApplication {
 
 		//kaydedilen öğrenci kimliğini görüntüleme
 		System.out.println("Öğrenci Kaydedildi. İD:  " + tempStudent.getId());
+
+
+
 	}
 
 }
