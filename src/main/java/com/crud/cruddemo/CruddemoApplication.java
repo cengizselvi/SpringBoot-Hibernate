@@ -1,5 +1,7 @@
 package com.crud.cruddemo;
 
+import com.crud.cruddemo.dao.StudentDAO;
+import com.crud.cruddemo.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,11 +17,25 @@ public class CruddemoApplication {
 	//İşlevsel bir arabirim, yalnızca bir soyut yöntemi olan bir Java arabirimidir (yani, yönergeleri olmayan, yalnızca bir adı olan bir yöntem).
 	//İşlevsel arayüzler, lambda işlevleriyle birlikte kullanılır.
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args) {
+	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		// Spring beans yüklendikten sonra çalıştırılacak ve bunu verilen bu yöntem içinde kullanabileceğiz.
 		return runner -> {
-			System.out.println("Hello World");
+			createStudent(studentDAO);
 		};
+	}
+
+	private void createStudent(StudentDAO studentDAO) {
+
+		//öğrenci nesnesini oluşturma
+		System.out.println("Yeni öğrenci nesnesi oluşturuluyor..");
+		Student tempStudent = new Student("Cengiz","Selvi","cengizselvi@gmail.com");
+
+		//öğrenci nesnesini kaydetme
+		System.out.println("Öğrenci Kaydediliyor");
+		studentDAO.save(tempStudent);
+
+		//kaydedilen öğrenci kimliğini görüntüleme
+		System.out.println("Öğrenci Kaydedildi. İD:  " + tempStudent.getId());
 	}
 
 }

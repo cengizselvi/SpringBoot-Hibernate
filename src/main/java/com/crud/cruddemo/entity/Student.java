@@ -1,6 +1,8 @@
 package com.crud.cruddemo.entity;
 
+
 import jakarta.persistence.*;
+
 
 @Entity
 @Table(name="student")
