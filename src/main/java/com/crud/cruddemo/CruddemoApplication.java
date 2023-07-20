@@ -29,13 +29,13 @@ public class CruddemoApplication {
 	private void readStudent(StudentDAO studentDAO) {
 		System.out.println("sorgulama id: 2 "  );
 		Student myStudent=studentDAO.findById(2);
-		System.out.println("bulundu: " + myStudent);
+		System.out.println(myStudent);
 	}
 
 	private void createStudent(StudentDAO studentDAO) {
 
 		//öğrenci nesnesini oluşturma
-		System.out.println("Yeni öğrenci nesnesi oluşturuluyor..");
+		System.out.println("Yeni öğrenci oluşturuluyor..");
 		Student tempStudent = new Student("Cengiz","Selvi","cengizselvi@gmail.com");
 
 		//öğrenci nesnesini kaydetme
