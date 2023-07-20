@@ -2,7 +2,7 @@
 Spring Boot database access with Hibernate
 
 
-**@Entitiy**// veritabanı nesnesini tanımlama
+**@Entity**// veritabanı nesnesini tanımlama
 **@Table(name=” ”)** // veritabanı tablo adı (class adı ile aynı olacak)
 
 **@Id**// ayırt edici
