@@ -13,9 +13,10 @@ Spring Boot database access with Hibernate
 **Entity** // Veritabanında bir kayıt gibi saklanan kalıcı nesnelerdir. Tipik olarak bir entity;ilişkisel veritabanındaki bir tabloyu gösterir. 
 
 **EntityManager** // Nesneler üzerindeki kalıcılık (persistence) işlemlerini yöneten arayüzdür. Sorgular için bir fabrika gibi çalışır. Select,insert,update,delete gibi metotları bulunur.
-JPA, çalışma zamanı kullanımı için API'yi kullanır EntityManager. EntityManagerVeritabanı ile uygulama oturumunu veya iletişim kutusunu temsil eder . EntityManagerHer istek veya her müşteri veritabanına erişmek için kendi kullanacaktır . EntityManager gerekli tüm kalıcılık işlemleri için bir API sağlar . Bunlar, aşağıdaki CRUD işlemlerini içerir:
-persist (INSERT)
-merge (UPDATE)
-remove (DELETE)
-find (SELECT)
+JPA, çalışma zamanı kullanımı için API'yi kullanır EntityManager. EntityManagerVeritabanı ile uygulama oturumunu veya iletişim kutusunu temsil eder . EntityManagerHer istek veya her müşteri veritabanına erişmek için kendi kullanacaktır. EntityManager gerekli tüm kalıcılık işlemleri için bir API sağlar. Bunlar, aşağıdaki CRUD işlemlerini içerir:
+- persist (INSERT)
+- merge (UPDATE)
+- remove (DELETE)
+- find (SELECT)
+  
 Bu, EntityManager nesne yönelimli bir API'dir, dolayısıyla doğrudan veritabanı SQL veya DML işlemleriyle eşleşmez. Örneğin, bir nesneyi güncellemek için, nesneyi okumanız ve yöntemlerini kullanarak durumunu değiştirmeniz ve ardından commit işlemi çağırmanız yeterlidir . Hangi nesneleri değiştirdiğinizi anlar EntityManager ve veritabanına doğru güncellemeleri yapar, JPA'da açık bir güncelleme işlemi yoktur.
