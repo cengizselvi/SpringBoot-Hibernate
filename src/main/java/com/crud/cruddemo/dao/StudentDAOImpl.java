@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public class StudentDAOImpl implements  StudentDAO{
 
-    // define field for entity manager
+    //entity manager tanýmlama
     private EntityManager entityManager;
 
-    // inject entity manager using consruector injection
+    //injection kullanarak  entity manager inject etme
 
     @Autowired
     public StudentDAOImpl(EntityManager entityManager) {
@@ -37,7 +37,8 @@ public class StudentDAOImpl implements  StudentDAO{
     @Override
     public List<Student> findAll() {
         //sorgu oluþturma
-        TypedQuery<Student> theQuery = entityManager.createQuery("From Student order by lastName", Student.class);
+        TypedQuery<Student> theQuery = entityManager.createQuery(
+                "From Student order by lastName", Student.class);
 
         return theQuery.getResultList();
     }
@@ -58,5 +59,12 @@ public class StudentDAOImpl implements  StudentDAO{
     @Transactional
     public void update(Student theStudent) {
         entityManager.merge(theStudent);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Integer id) {
+        Student theStudent=entityManager.find(Student.class,id);
+        entityManager.remove(theStudent);
     }
 }

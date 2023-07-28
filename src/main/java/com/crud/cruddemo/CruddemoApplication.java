@@ -26,12 +26,18 @@ public class CruddemoApplication {
 			//readStudent(studentDAO);
 			//queryForStudent(studentDAO);
 			//queryForStudentsByLastName(studentDAO);
-			updateStudent(studentDAO);
-
-
+			//updateStudent(studentDAO);
+			//deleteStudent(studentDAO);
 
 
 		};
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		int studentId=2;
+		Student myStudent= studentDAO.findById(studentId);
+		studentDAO.delete(studentId);
+		System.out.println("Silinen ogrenci: " + myStudent);
 	}
 
 	private void updateStudent(StudentDAO studentDAO) {
