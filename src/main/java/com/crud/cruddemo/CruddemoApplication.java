@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class CruddemoApplication {
 
@@ -20,15 +22,56 @@ public class CruddemoApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		// Spring beans yüklendikten sonra çalıştırılacak ve bunu verilen bu yöntem içinde kullanabileceğiz.
 		return runner -> {
-			createStudent(studentDAO);
-			readStudent(studentDAO);
+			//createStudent(studentDAO);
+			//readStudent(studentDAO);
+			//queryForStudent(studentDAO);
+			//queryForStudentsByLastName(studentDAO);
+			updateStudent(studentDAO);
+
+
+
 
 		};
 	}
 
+	private void updateStudent(StudentDAO studentDAO) {
+
+		//primery key'e göre öğrenciyi güncelleme
+		int studentId=1;
+		System.out.println("Ogrencinin ID'si: " + studentId);
+		Student myStudent= studentDAO.findById(studentId);
+
+		//öğrenci adını değiştirme
+		System.out.println("Ogrenci adı degistiriliyor...");
+		myStudent.setFirstName("Murat");
+
+		//öğrenciyi güncelle
+		studentDAO.update(myStudent);
+
+		//güncellenen öğrenciyi göster
+		System.out.println("Guncellendi: " + myStudent);
+
+	}
+
+	private void queryForStudentsByLastName(StudentDAO studentDAO) {
+		List<Student>  theStudents= studentDAO.findbyLastName("Selvi");
+		for (Student tempStudent : theStudents )
+			System.out.println(tempStudent);
+	}
+
+	private void queryForStudent(StudentDAO studentDAO) {
+		// öğrencilerin listesini almak
+		List<Student> theStudents = studentDAO.findAll();
+
+		for (Student tempStudent : theStudents)
+			System.out.println(tempStudent);
+
+	}
+
 	private void readStudent(StudentDAO studentDAO) {
-		System.out.println("sorgulama id: 2 "  );
+
 		Student myStudent=studentDAO.findById(2);
+		System.out.println("sorgulama id:  " + myStudent.getId()   );
 		System.out.println(myStudent);
 	}
 
@@ -48,5 +91,6 @@ public class CruddemoApplication {
 
 
 	}
+
 
 }
